@@ -12,7 +12,29 @@ class AdminUserSeeder extends Seeder
     {
         User::updateOrCreate(
             [
-                'email' => 'admin@gmail.com',
+                'email' => 'owan@gmail.com',
+            ],
+            [
+                'name' => 'Admin',
+                'password' => Hash::make('adminadmin'),
+                'role' => 'admin',
+                'email_verified_at' => now(),
+            ]
+        );
+         User::updateOrCreate(
+            [
+                'email' => 'apip@gmail.com',
+            ],
+            [
+                'name' => 'Admin',
+                'password' => Hash::make('adminadmin'),
+                'role' => 'admin',
+                'email_verified_at' => now(),
+            ]
+        );
+         User::updateOrCreate(
+            [
+                'email' => 'prama@gmail.com',
             ],
             [
                 'name' => 'Admin',
