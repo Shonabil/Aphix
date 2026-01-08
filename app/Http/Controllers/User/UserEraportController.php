@@ -24,4 +24,6 @@ class UserEraportController extends Controller
 
         return view('eraport', compact('reports'));
     }
+
+    
 }

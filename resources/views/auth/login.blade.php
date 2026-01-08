@@ -241,13 +241,6 @@
             </div>
         </div>
 
-        <div class="mb-6">
-            <a href="{{ route('auth.google') }}" class="btn-google">
-                <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google Logo">
-                <span>Google</span>
-            </a>
-        </div>
-
         <div class="text-center text-sm text-blue-900">
             Belum punya akun?
             <a href="{{ route('register') }}" class="text-orange-400 font-semibold custom-link ml-1">
