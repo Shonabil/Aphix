@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -41,18 +40,6 @@ class AdminController extends Controller
             'usersPerDay',
             'roleCount'
         ));
-
-        // Tentukan batas waktu aktivitas untuk dianggap "Aktif" (misal: 10 menit terakhir)
-        $timeLimit = Carbon::now()->subMinutes(10)->getTimestamp();
-
-        // Hitung session yang aktivitasnya lebih baru dari batas waktu
-        $activeSessions = DB::table('sessions')
-                            ->where('last_activity', '>=', $timeLimit)
-                            ->count();
-
-        // Kirim data ke view
-        return view('admin.dashboard', compact('activeSessions'));
-
     }
 
     /**
@@ -86,7 +73,8 @@ class AdminController extends Controller
 
     public function eraportIndex() // Atau nama method kamu
 {
-
+    // Ambil user role 'user' (siswa), beserta data rapornya
+    // Gunakan paginate supaya halaman rapi
     $users = \App\Models\User::where('role', 'user') // Sesuaikan kolom role kamu
                 ->with('eraports') // Pastikan nama relasi di Model User adalah 'eraports'
                 ->latest()
