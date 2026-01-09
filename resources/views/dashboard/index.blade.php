@@ -11,6 +11,7 @@
         .hide-scrollbar::-webkit-scrollbar {
             display: none;
         }
+
         .hide-scrollbar {
             -ms-overflow-style: none;
             scrollbar-width: none;
@@ -20,6 +21,7 @@
         .snap-x-mandatory {
             scroll-snap-type: x mandatory;
         }
+
         .snap-center {
             scroll-snap-align: center;
         }
@@ -31,66 +33,76 @@
     {{-- ========================================================== --}}
     {{-- 1. SECTION: PLAYER OF THE MONTH (FULL WIDTH BANNER DESIGN) --}}
     {{-- ========================================================== --}}
-    @if(isset($pom) && $pom->count() > 0)
-    <section class="bg-[#020617] pt-6 pb-2 relative overflow-hidden">
+    @if (isset($pom) && $pom->count() > 0)
+        <section class="bg-[#020617] pt-6 pb-2 relative overflow-hidden">
 
-        {{-- Container Utama Scroll --}}
-        <div id="pomBannerContainer" class="flex overflow-x-auto hide-scrollbar snap-x-mandatory z-10 relative py-4">
+            {{-- Container Utama Scroll --}}
+            <div id="pomBannerContainer" class="flex overflow-x-auto hide-scrollbar snap-x-mandatory z-10 relative py-4">
 
-            @foreach($pom as $p)
-            {{-- ITEM BANNER (Persegi Panjang Full) --}}
-            {{-- Kita pakai w-[95vw] atau w-full dengan max-w-7xl agar di layar besar tidak terlalu lebar --}}
-            <div class="w-full md:max-w-7xl mx-auto px-4 md:px-6 flex-shrink-0 snap-center">
+                @foreach ($pom as $p)
+                    {{-- ITEM BANNER (Persegi Panjang Full) --}}
+                    {{-- Kita pakai w-[95vw] atau w-full dengan max-w-7xl agar di layar besar tidak terlalu lebar --}}
+                    <div class="w-full md:max-w-7xl mx-auto px-4 md:px-6 flex-shrink-0 snap-center">
 
-                <div class="relative w-full rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-slate-900 via-[#0F2A44] to-slate-950 border border-slate-800 shadow-2xl shadow-orange-900/20 h-[500px] md:h-[450px] lg:h-[400px] grid md:grid-cols-12 group">
+                        <div
+                            class="relative w-full rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-slate-900 via-[#0F2A44] to-slate-950 border border-slate-800 shadow-2xl shadow-orange-900/20 h-[500px] md:h-[450px] lg:h-[400px] grid md:grid-cols-12 group">
 
-                    {{-- BACKGROUND DEKORASI --}}
-                    <div class="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
-                    <div class="absolute -top-20 -left-20 w-60 h-60 bg-orange-500/20 rounded-full blur-[100px]"></div>
-                    <div class="absolute bottom-0 right-0 w-80 h-80 bg-accent/10 rounded-full blur-[120px]"></div>
+                            {{-- BACKGROUND DEKORASI --}}
+                            <div
+                                class="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]">
+                            </div>
+                            <div class="absolute -top-20 -left-20 w-60 h-60 bg-orange-500/20 rounded-full blur-[100px]">
+                            </div>
+                            <div class="absolute bottom-0 right-0 w-80 h-80 bg-accent/10 rounded-full blur-[120px]"></div>
 
-                    {{-- KOLOM KIRI: TEKS (Dominan di HP) --}}
-                    <div class="md:col-span-7 relative z-20 flex flex-col justify-center p-8 md:p-12 lg:pl-16">
+                            {{-- KOLOM KIRI: TEKS (Dominan di HP) --}}
+                            <div class="md:col-span-7 relative z-20 flex flex-col justify-center p-8 md:p-12 lg:pl-16">
 
-                        {{-- Badge Kecil --}}
-                        <div class="flex items-center gap-2 mb-4 animate-fade-in-down" style="animation-delay: 100ms">
-                             <span class="bg-orange-600 text-white text-[10px] md:text-xs font-black uppercase tracking-[0.2em] px-3 py-1.5 rounded-full">
-                                <i class="fa-solid fa-crown mr-1"></i> Hall of Fame
-                            </span>
-                            <span class="text-slate-400 text-sm font-medium">Player of The Month</span>
+                                {{-- Badge Kecil --}}
+                                <div class="flex items-center gap-2 mb-4 animate-fade-in-down"
+                                    style="animation-delay: 100ms">
+                                    <span
+                                        class="bg-orange-600 text-white text-[10px] md:text-xs font-black uppercase tracking-[0.2em] px-3 py-1.5 rounded-full">
+                                        <i class="fa-solid fa-crown mr-1"></i> Hall of Fame
+                                    </span>
+                                    <span class="text-slate-400 text-sm font-medium">Player of The Month</span>
+                                </div>
+
+                                {{-- KATEGORI (Besar Sekali) --}}
+                                <h2 class="text-4xl sm:text-5xl lg:text-7xl font-black text-white uppercase italic leading-none mb-2 drop-shadow-lg animate-fade-in-down"
+                                    style="animation-delay: 200ms">
+                                    {{ $p->category }}
+                                </h2>
+
+                                {{-- NAMA PEMAIN --}}
+                                <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-accent to-white animate-fade-in-down"
+                                    style="animation-delay: 300ms">
+                                    {{ $p->name }}
+                                </h3>
+
+                                {{-- Garis Hiasan --}}
+                                <div class="h-1 w-24 bg-orange-600 mt-6 rounded-full"></div>
+                            </div>
+
+                            {{-- KOLOM KANAN: FOTO (Full height, blended) --}}
+                            <div class="md:col-span-5 relative h-full overflow-hidden">
+                                {{-- Overlay Gradient agar foto menyatu dengan background di bagian bawah/samping --}}
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-slate-950 via-slate-950/50 to-transparent z-10">
+                                </div>
+
+                                {{-- FOTO --}}
+                                <img src="{{ asset('storage/' . $p->image) }}"
+                                    class="w-full h-full object-cover object-top md:object-center transform group-hover:scale-105 transition duration-700 ease-in-out"
+                                    alt="{{ $p->name }}">
+                            </div>
+
                         </div>
-
-                        {{-- KATEGORI (Besar Sekali) --}}
-                        <h2 class="text-4xl sm:text-5xl lg:text-7xl font-black text-white uppercase italic leading-none mb-2 drop-shadow-lg animate-fade-in-down" style="animation-delay: 200ms">
-                            {{ $p->category }}
-                        </h2>
-
-                        {{-- NAMA PEMAIN --}}
-                        <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-accent to-white animate-fade-in-down" style="animation-delay: 300ms">
-                            {{ $p->name }}
-                        </h3>
-
-                        {{-- Garis Hiasan --}}
-                        <div class="h-1 w-24 bg-orange-600 mt-6 rounded-full"></div>
                     </div>
+                @endforeach
 
-                    {{-- KOLOM KANAN: FOTO (Full height, blended) --}}
-                    <div class="md:col-span-5 relative h-full overflow-hidden">
-                         {{-- Overlay Gradient agar foto menyatu dengan background di bagian bawah/samping --}}
-                         <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-slate-950 via-slate-950/50 to-transparent z-10"></div>
-
-                         {{-- FOTO --}}
-                        <img src="{{ asset('storage/' . $p->image) }}"
-                             class="w-full h-full object-cover object-top md:object-center transform group-hover:scale-105 transition duration-700 ease-in-out"
-                             alt="{{ $p->name }}">
-                    </div>
-
-                </div>
             </div>
-            @endforeach
-
-        </div>
-    </section>
+        </section>
     @endif
     {{-- ================= END PLAYER OF THE MONTH ================= --}}
 
@@ -124,24 +136,24 @@
             <div class="absolute -bottom-10 -right-10 w-60 h-60 bg-orange-500/10 rounded-full blur-3xl"></div>
 
             {{-- GALLERY OTOMATIS (HANYA DARI ADMIN) --}}
-            <div id="autoGallery" class="flex gap-6 select-none relative z-10 overflow-x-scroll hide-scrollbar h-[350px] items-center">
+            <div id="autoGallery"
+                class="flex gap-6 select-none relative z-10 overflow-x-scroll hide-scrollbar h-[350px] items-center">
 
-                @if(isset($landingContent) && $landingContent->count() > 0)
+                @if (isset($landingContent) && $landingContent->count() > 0)
                     {{-- LOOPING DATA DARI DATABASE (UPLOAD ADMIN) --}}
-                    @foreach($landingContent as $content)
-                        @if($content->file_type == 'video')
+                    @foreach ($landingContent as $content)
+                        @if ($content->file_type == 'video')
                             <video class="gallery-img rounded-xl min-w-[250px] h-[350px] object-cover"
-                                   src="{{ asset('storage/' . $content->file_path) }}"
-                                   muted autoplay loop playsinline></video>
+                                src="{{ asset('storage/' . $content->file_path) }}" muted autoplay loop playsinline></video>
                         @else
                             <img class="gallery-img rounded-xl min-w-[250px] h-[350px] object-cover"
-                                 src="{{ asset('storage/' . $content->file_path) }}"
-                                 alt="Gallery Content" />
+                                src="{{ asset('storage/' . $content->file_path) }}" alt="Gallery Content" />
                         @endif
                     @endforeach
                 @else
                     {{-- JIKA KOSONG: TAMPILKAN PLACEHOLDER SEDERHANA ATAU KOSONG --}}
-                    <div class="w-full text-center text-slate-500 opacity-50 flex flex-col items-center justify-center border-2 border-dashed border-slate-700 rounded-xl h-full min-w-[300px]">
+                    <div
+                        class="w-full text-center text-slate-500 opacity-50 flex flex-col items-center justify-center border-2 border-dashed border-slate-700 rounded-xl h-full min-w-[300px]">
                         <i class="fa-regular fa-images text-4xl mb-2"></i>
                         <p class="text-sm">Belum ada konten galeri.</p>
                     </div>
@@ -307,36 +319,76 @@
                     </ul>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                    <!-- Registration Fee -->
                     <div
                         class="glass-effect bg-white/10 backdrop-blur-xl p-5 rounded-2xl card-hover reveal animate-float hover:-translate-y-1 hover:shadow-xl hover:shadow-green-400/40">
                         <span class="text-4xl mb-3 block drop-shadow-lg text-green-400">
                             <i class="fa-solid fa-money-bill-wave"></i>
                         </span>
-                        <h4 class="font-bold text-lg text-green-300 drop-shadow-sm mb-2">Registration Fee</h4>
-                        <div class="text-2xl font-bold text-white drop-shadow-md">Rp 250K</div>
-                        <p class="text-xs text-gray-300 mb-3">Pendaftaran</p>
+                        <h4 class="font-bold text-lg text-green-300 drop-shadow-sm mb-2">
+                            Registration Fee
+                        </h4>
+                        <div class="text-2xl font-bold text-white drop-shadow-md">
+                            Rp 200K
+                        </div>
+                        <p class="text-xs text-gray-300 mb-3">Pendaftaran (sekali bayar)</p>
                         <ul class="text-sm text-gray-200 space-y-1">
                             <li>• Free training ball</li>
                             <li>• Free resistance band</li>
                         </ul>
                     </div>
 
+                    <!-- Monthly Fee -->
                     <div
                         class="glass-effect bg-white/10 backdrop-blur-xl p-5 rounded-2xl card-hover reveal animate-float hover:-translate-y-1 hover:shadow-xl hover:shadow-green-400/40">
                         <span class="text-4xl mb-3 block drop-shadow-lg text-green-400">
                             <i class="fa-solid fa-calendar-check"></i>
                         </span>
-                        <h4 class="font-bold text-lg text-green-300 drop-shadow-sm mb-2">Monthly Fee</h4>
-                        <div class="text-2xl font-bold text-white drop-shadow-md">Rp 200K</div>
-                        <p class="text-xs text-gray-300 mb-3">/ bulan</p>
+                        <h4 class="font-bold text-lg text-green-300 drop-shadow-sm">
+                            Monthly Fee
+                        </h4>
+
+                        <div class="text-2xl font-bold text-white drop-shadow-md mt-10">
+                            Rp 200K
+                        </div>
+
+                        <p class="text-xs text-gray-300 mb-3">Per bulan</p>
                         <ul class="text-sm text-gray-200 space-y-1">
-                            <li>Semua sesi latihan & event Aphix</li>
+                            <li>
+                                • Semua sesi latihan
+                                <span class="font-semibold text-white"> (include renang &amp; cardio)</span>
+                            </li>
+                            <li>• Event internal Aphix</li>
+                        </ul>
+
+                    </div>
+
+                    <!-- Non-Renang Program -->
+                    <div
+                        class="glass-effect bg-white/10 backdrop-blur-xl p-5 rounded-2xl card-hover reveal animate-float hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-400/40">
+                        <span class="text-4xl mb-3 block drop-shadow-lg text-blue-400">
+                            <i class="fa-solid fa-dumbbell"></i>
+                        </span>
+                        <h4 class="font-bold text-lg text-blue-300 drop-shadow-sm mb-2">
+                            Program Non-Renang
+                        </h4>
+                        <div class="text-2xl font-bold text-white drop-shadow-md">
+                            Rp 150K
+                        </div>
+                        <p class="text-xs text-gray-300 mb-3">per bulan</p>
+                        <ul class="text-sm text-gray-200 space-y-1">
+                            <li>• Semua sesi latihan</li>
+                            <li>• Event internal Aphix</li>
                         </ul>
                     </div>
+
                 </div>
 
-                <div class="glass-effect p-8 max-w rounded-3xl card-hover reveal animate-float hover:-translate-y-1 hover:shadow-xl hover:shadow-accent 500/20">
+
+                <div
+                    class="glass-effect p-8 max-w rounded-3xl card-hover reveal animate-float hover:-translate-y-1 hover:shadow-xl hover:shadow-accent 500/20">
                     <div class="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-16">
 
                         <div class="flex items-center gap-4 w-full sm:w-auto justify-center sm:justify-start">
@@ -346,9 +398,15 @@
                             <div class="text-left">
                                 <h4 class="font-bold text-lg text-orange-400">Latihan</h4>
                                 <p class="text-gray-300 text-sm">
-                                    Selasa & Kamis<br />
-                                    17.00 – 18.00 WIB
+                                    Selasa <br />
+                                    17.00 – 18.00
                                 </p>
+                                <br>
+                                <p class="text-gray-300 text-sm">
+                                    Sabtu <br />
+                                    14.00 – 15.00
+                                </p>
+                                <b><b class="text-gray-300">Flexible</b></b>
                             </div>
                         </div>
 
@@ -370,7 +428,7 @@
                                 </h4>
                                 <p class="text-gray-300 text-sm leading-relaxed">
                                     Minggu<br />
-                                    08.00 – 10.00 WIB
+                                    07.00 – 09.00 WIB
                                 </p>
                             </div>
                         </div>
@@ -459,11 +517,17 @@
             function scrollNextBanner() {
                 // Cek jika sudah di ujung kanan
                 if (pomBannerContainer.scrollLeft + pomBannerContainer.clientWidth >= pomBannerContainer.scrollWidth - 10) {
-                     // Balik ke awal dengan smooth
-                     pomBannerContainer.scrollTo({ left: 0, behavior: 'smooth' });
+                    // Balik ke awal dengan smooth
+                    pomBannerContainer.scrollTo({
+                        left: 0,
+                        behavior: 'smooth'
+                    });
                 } else {
                     // Scroll ke item berikutnya
-                    pomBannerContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                    pomBannerContainer.scrollBy({
+                        left: scrollAmount,
+                        behavior: 'smooth'
+                    });
                 }
             }
 
