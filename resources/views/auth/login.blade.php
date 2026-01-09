@@ -17,6 +17,33 @@
         }
 
         /* ===============================
+   BUTTON SHIMMER LOADING
+================================ */
+.btn-loading {
+    pointer-events: none;
+    opacity: 0.85;
+}
+
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        transparent 35%,
+        rgba(255,255,255,0.35) 50%,
+        transparent 65%
+    );
+    animation: btn-shimmer 1.2s infinite;
+}
+
+@keyframes btn-shimmer {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(100%); }
+}
+
+
+        /* ===============================
            LABEL
         ================================ */
         label, .x-input-label {
@@ -224,12 +251,23 @@
                 @endif
             </div>
 
-            <div class="mb-6">
-                <x-primary-button
-                    class="w-full justify-center custom-button text-white font-bold py-3.5 rounded-xl shadow-lg relative z-10">
-                    {{ __('Log in') }}
-                </x-primary-button>
-            </div>
+    <div class="mb-6" x-data="{ loading: false }">
+    <x-primary-button
+        @click="loading = true"
+        x-bind:disabled="loading"
+        x-bind:class="loading ? 'btn-loading' : ''"
+        class="w-full justify-center custom-button text-white font-bold py-3.5 rounded-xl shadow-lg relative z-10
+               disabled:cursor-not-allowed">
+
+        <!-- Text -->
+        <span x-text="loading ? 'Processing…' : 'Log in'"
+              x-transition.opacity>
+        </span>
+
+    </x-primary-button>
+</div>
+
+
         </form>
 
         <div class="relative my-8">
