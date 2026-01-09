@@ -50,18 +50,14 @@
         </div>
 
         <div class="relative overflow-hidden rounded-2xl bg-slate-900 border border-slate-800 p-6 group hover:border-blue-500/30 transition-all duration-300">
-    <div class="absolute right-0 top-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-        <i class="fa-solid fa-chart-line text-4xl text-blue-400"></i>
-    </div>
-    <p class="text-slate-400 text-sm font-medium">Active Sessions</p>
-
-    {{-- Update bagian ini dengan variabel Blade --}}
-    <h2 class="text-4xl font-bold mt-2 text-white group-hover:text-blue-400 transition-colors">
-        {{ $activeSessions }}
-    </h2>
-
-    <p class="text-xs text-slate-500 mt-2">Real-time monitoring (Last 10m)</p>
-</div>
+            <div class="absolute right-0 top-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                <i class="fa-solid fa-chart-line text-4xl text-blue-400"></i>
+            </div>
+            <p class="text-slate-400 text-sm font-medium">Active Sessions</p>
+            <h2 class="text-4xl font-bold mt-2 text-white group-hover:text-blue-400 transition-colors">
+                - </h2>
+            <p class="text-xs text-slate-500 mt-2">Real-time monitoring</p>
+        </div>
 
     </div>
 
