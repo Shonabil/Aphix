@@ -319,68 +319,84 @@
                     </ul>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 max-w-4xl mx-auto">
 
-                    <!-- Registration Fee -->
                     <div
-                        class="glass-effect bg-white/10 backdrop-blur-xl p-5 rounded-2xl card-hover reveal animate-float hover:-translate-y-1 hover:shadow-xl hover:shadow-green-400/40">
+                        class="glass-effect bg-white/10 backdrop-blur-xl p-5 rounded-2xl card-hover reveal animate-float hover:-translate-y-1 hover:shadow-xl hover:shadow-green-400/40 relative overflow-hidden group">
+
+                        <div
+                            class="absolute top-0 right-0 -mr-4 -mt-4 w-20 h-20 bg-green-500/20 blur-2xl rounded-full group-hover:bg-green-400/30 transition-all duration-500">
+                        </div>
+
                         <span class="text-4xl mb-3 block drop-shadow-lg text-green-400">
                             <i class="fa-solid fa-money-bill-wave"></i>
                         </span>
+
                         <h4 class="font-bold text-lg text-green-300 drop-shadow-sm mb-2">
                             Registration Fee
                         </h4>
-                        <div class="text-2xl font-bold text-white drop-shadow-md">
-                            Rp 200K
+
+                        <div class="flex flex-col items-start mb-2 min-h-[60px] justify-center">
+                            <span
+                                class="bg-red-500 border border-red-500/30 text-red-200 text-[10px] font-bold px-2 py-0.5 rounded-full mb-1 tracking-wide">
+                                KHUSUS PENDAFTARAN BULAN JANUARI
+                            </span>
+
+                            <div class="flex items-baseline gap-2">
+                                <span
+                                    class="text-sm text-gray-400 font-medium line-through decoration-red-500 decoration-2 opacity-70">
+                                    Rp 200K
+                                </span>
+                                <span class="text-3xl font-bold text-white drop-shadow-[0_0_10px_rgba(74,222,128,0.5)]">
+                                    Rp 150K
+                                </span>
+                            </div>
                         </div>
+
                         <p class="text-xs text-gray-300 mb-3">Pendaftaran (sekali bayar)</p>
+
                         <ul class="text-sm text-gray-200 space-y-1">
-                            <li>• Free training ball</li>
-                            <li>• Free resistance band</li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-green-400 text-xs">✓</span> Gratis Bola
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-green-400 text-xs">✓</span> Gratis Karet Kaki
+                            </li>
                         </ul>
                     </div>
 
-                    <!-- Monthly Fee -->
                     <div
-                        class="glass-effect bg-white/10 backdrop-blur-xl p-5 rounded-2xl card-hover reveal animate-float hover:-translate-y-1 hover:shadow-xl hover:shadow-green-400/40">
+                        class="glass-effect bg-white/10 backdrop-blur-xl p-5 rounded-2xl card-hover reveal animate-float hover:-translate-y-1 hover:shadow-xl hover:shadow-green-400/40 relative overflow-hidden group">
+
+                        <div
+                            class="absolute top-0 right-0 -mr-4 -mt-4 w-20 h-20 bg-white/5 blur-2xl rounded-full group-hover:bg-white/10 transition-all duration-500">
+                        </div>
+
                         <span class="text-4xl mb-3 block drop-shadow-lg text-green-400">
                             <i class="fa-solid fa-calendar-check"></i>
                         </span>
-                        <h4 class="font-bold text-lg text-green-300 drop-shadow-sm">
+
+                        <h4 class="font-bold text-lg text-green-300 drop-shadow-sm mb-2">
                             Monthly Fee
                         </h4>
 
-                        <div class="text-2xl font-bold text-white drop-shadow-md mt-10">
-                            Rp 200K
+                        <div class="flex flex-col items-start mb-2 min-h-[60px] justify-center">
+                            <div class="h-[18px] mb-1"></div>
+
+                            <div class="text-3xl font-bold text-white drop-shadow-md">
+                                Rp 150K
+                            </div>
                         </div>
 
                         <p class="text-xs text-gray-300 mb-3">Per bulan</p>
+
                         <ul class="text-sm text-gray-200 space-y-1">
-                            <li>
-                                • Semua sesi latihan
-                                <span class="font-semibold text-white"> (include renang &amp; cardio)</span>
+                            <li class="flex items-center gap-2">
+                                <span class="text-green-400 text-xs">✓</span> Semua sesi latihan ( Renang & Cardio )
                             </li>
-                            <li>• Event internal Aphix</li>
-                        </ul>
-
-                    </div>
-
-                    <!-- Non-Renang Program -->
-                    <div
-                        class="glass-effect bg-white/10 backdrop-blur-xl p-5 rounded-2xl card-hover reveal animate-float hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-400/40">
-                        <span class="text-4xl mb-3 block drop-shadow-lg text-blue-400">
-                            <i class="fa-solid fa-dumbbell"></i>
-                        </span>
-                        <h4 class="font-bold text-lg text-blue-300 drop-shadow-sm mb-2">
-                            Program Non-Renang
-                        </h4>
-                        <div class="text-2xl font-bold text-white drop-shadow-md">
-                            Rp 150K
-                        </div>
-                        <p class="text-xs text-gray-300 mb-3">per bulan</p>
-                        <ul class="text-sm text-gray-200 space-y-1">
-                            <li>• Semua sesi latihan</li>
-                            <li>• Event internal Aphix</li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-green-400 text-xs">✓</span> Event internal Aphix
+                            </li>
                         </ul>
                     </div>
 
