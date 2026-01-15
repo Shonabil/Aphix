@@ -1,33 +1,37 @@
-name: Deploy Laravel
+name: Deploy Laravel to Hostdata
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main  # ubah kalau pakai branch lain
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Deploy ke Hostdata via SSH
-        uses: appleboy/ssh-action@master
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.8.1
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
+          ssh-private-key: ${{ secrets.SSH_KEY }}
+
+      - name: Deploy to Hostdata
+        uses: appleboy/ssh-action@v0.1.6
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_KEY }}
-          port: ${{ secrets.PORT }}
           script: |
-            # Masuk ke folder project yang benar (Huruf A besar sesuai server)
-            cd /home/aphixpr1/Aphix
-            
-            # Update codingan dari GitHub
+            echo "Deploy Laravel App..."
+            cd ${{ secrets.APP_PATH }}
             git pull origin main
-            
-            # Install ulang dependensi biar aman
-            composer install --no-dev --optimize-autoloader
-            
-            # Update database & Bersihkan cache
+            composer install --no-interaction --prefer-dist --optimize-autoloader
             php artisan migrate --force
-            php artisan optimize:clear
             php artisan config:cache
             php artisan route:cache
             php artisan view:cache
+            echo "Deployment finished!"
